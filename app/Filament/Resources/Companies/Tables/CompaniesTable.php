@@ -4,9 +4,8 @@ namespace App\Filament\Resources\Companies\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
-//use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -19,7 +18,7 @@ class CompaniesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('address')
+                TextColumn::make('addres')
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
@@ -28,7 +27,8 @@ class CompaniesTable
                     ->searchable(),
                 ImageColumn::make('logo')
                     ->disk('public')
-                    ->visibility('public'),
+                    ->visibility('public')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -42,14 +42,14 @@ class CompaniesTable
                 //
             ])
             ->recordActions([
-               // ViewAction::make(),
-               // EditAction::make(),
-               // DeleteAction::make(),
+                
+                EditAction::make(),
+                // DeleteAction::make(),
             ])
             ->toolbarActions([
-                BulkActionGroup::make([
+                // BulkActionGroup::make([
                    // DeleteBulkAction::make(),
-                ]),
+                // ]),
             ]);
     }
 }

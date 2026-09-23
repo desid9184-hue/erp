@@ -6,6 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Console\Attributes\Description;
 
 class CompanyForm
 {
@@ -13,32 +14,27 @@ class CompanyForm
     {
         return $schema
             ->components([
-                
-                Section::make('Company Information')
-                    ->description('Please provide an information of your company')
+                Section::make('company information')
+                    ->description('Please fill in the following information about the company.')
                     ->columns(2)
                     ->columnSpan(2)
                     ->schema([
-
                         TextInput::make('name')
-                            ->required(),
-
+                            ->required()
+                            ->columnSpanFull(),
                         TextInput::make('address')
-                            ->required(),
-
+                            ->required()
+                            ->columnSpanFull(),
                         TextInput::make('email')
                             ->label('Email address')
                             ->email()
                             ->required(),
-
                         TextInput::make('phone_number')
                             ->tel()
                             ->required(),
                     ]),
-
-                Section::make('Company Logo')
-                    ->description('Please upload a logo of your company')
-                    ->schema([
+                Section::make('Logo')
+                    ->components([
 
                         FileUpload::make('logo')
                             ->image()
@@ -46,7 +42,6 @@ class CompanyForm
                             ->directory('logos')
                             ->visibility('public'),
                     ]),
-            ])
-            ->columns(3);
+            ])->columns(3);
     }
 }

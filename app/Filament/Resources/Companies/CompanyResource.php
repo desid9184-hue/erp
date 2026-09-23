@@ -18,7 +18,8 @@ use UnitEnum;
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
-    protected static string|UnitEnum|null $navigationGroup = 'Settings';
+    
+    protected static string|UnitEnum|null $navigationGroup = 'settings';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice;
 
     public static function form(Schema $schema): Schema
