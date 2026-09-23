@@ -15,7 +15,6 @@ class EmployeesTable
     {
         return $table
             ->columns([
-
                 // FOTO
                 ImageColumn::make('image')
                     ->label('Photo')
